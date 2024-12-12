@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Details</title>
+    <link href="https://fonts.googleapis.com/css2?family=Anek+Devanagari:wght@400;600&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Roboto Slab', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #b2cdc0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 400px;
+            background: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            border-radius: 20px;
+            
+        }
+
+        .container::before, .container::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: #b2cdc0;
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .container::before {
+            left: -20px;
+        }
+
+        .container::after {
+            right: -20px;
+        }
+
+        .dotted-line-between {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            transform: translateY(-50%);
+            border-top: 2px dashed #ccc;
+        }
+
+        .header {
+            background-color: #219652;
+            color: white;
+            padding: 16px;
+            font-size: 18px;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+
+        .header span {
+            font-size: 12px;
+            color: #ffffff;
+        }
+
+        .content {
+            padding: 20px;
+            position: relative;
+        }
+
+        .route-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .route-info .icon {
+            width: 50px;
+            height: 50px;
+            background-color: #219652;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 24px;
+            margin-right: 16px;
+        }
+
+        .route-info .details {
+            font-size: 14px;
+            font-family: 'Anek Devanagari', sans-serif;
+        }
+
+        .route-info .details .route-number {
+            font-size: 20px;
+            font-weight: 600;
+        }
+       
+        .stops {
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* Adjusted the gap for better spacing */
+        }
+
+        .stops label {
+            display: flex;
+            align-items: center;
+            gap: 15px; /* Space between radio and label */
+            font-size: 13px;
+            color: #333;
+        }
+
+        .custom-radio {
+            width: 12px;
+            height: 12px;
+            border: 2px solid rgb(115, 112, 112);
+            border-radius: 50%;
+            background-color: transparent;
+            display: inline-block;
+        }
+
+        .edit {
+            font-size: 14px;
+            color: #616161;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        /* Custom radio appearance */
+        .stops input[type="radio"] {
+            display: none;
+        }
+
+        .stops input[type="radio"]{
+            margin-right: 8px;
+        }
+
+        /* New styles to ensure the stop name appears below */
+        .stop-name {
+            display: block;
+            margin-top: 5px;
+            font-size: 14px;
+            color: #616161;
+        }
+        
+        .fare-options {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+
+        .fare-options button {
+            flex: 1;
+            margin: 0 8px;
+            padding: 12px;
+            font-size: 14px;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .fare-options button:first-child {
+            background-color: #a1a1a1;
+        }
+
+        .fare-options button:last-child {
+            background-color: #219652;
+        }
+
+        .ticket-count {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+
+        .ticket-count label {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .ticket-count .counter {
+            display: flex;
+            align-items: center;
+        }
+
+        .counter button {
+            width: 36px;
+            height: 36px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            background-color: white;
+            border-radius: 50%;
+            margin: 0 8px;
+        }
+
+        .price {
+            font-size: 14px;
+            color: #616161;
+        }
+
+        .pay-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-top: 1px solid #ccc;
+            background-color: #f5f5f5;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+
+        .pay-section select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .pay-section button {
+            padding: 12px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #219652;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        /* Dotted and solid lines */
+        .horizontal-line {
+            border-top: 2px solid #ccc;
+            margin: 15px 0;
+        }
+
+        .dotted-line {
+            border-top: 2px dashed #ccc;
+            margin: 15px 0;
+        }
+
+        .content .horizontal-line {
+            width: 100%;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div><span id="current-date-time"></span></div>
+            
+        </div>
+        <div class="dotted-line-between"></div>
+        <div class="content">
+            <div class="route-info">
+                <div class="icon">
+                    <img width="30" height="30" src="https://img.icons8.com/material-rounded/48/FFFFFF/bus.png" alt="bus" />
+                </div>
+                
+                                <div class="details">
+                    <div class="route-number">133</div>
+                    <div>towards Ma Na Pa Shramik Bhavan</div>
+                </div>
+            </div>
+
+            <div class="dotted-line"></div>
+
+            <div class="stops">
+                <label>
+                    <input type="radio" name="stop" />
+                    <span class="custom-radio"></span>
+                    Starting stop
+                    <span class="stop-name">Kumbharwada &#9998;</span>
+                </label>
+                <label>
+                    <input type="radio" name="stop" />
+                    <span class="custom-radio"></span>
+                    Ending stop
+                    <span class="stop-name">Ma Na Pa Shramik Bhavan &#9998;</span>
+                </label>
+            </div>
+            
+            <div class="horizontal-line"></div>
+            
+            <div class="fare-options">
+                <button>By Fare</button>
+                <button>By Ending stop</button>
+            </div>
+
+            <div class="dotted-line"></div>
+
+            <div class="ticket-count">
+                <label>Full <span class="price">&#8377;5.0</span></label>
+                <div class="counter">
+                    <button>-</button>
+                    <span>1</span>
+                    <button>+</button>
+                </div>
+            </div>
+
+            <div class="ticket-count">
+                <label>Half <span class="price">&#8377;5.0</span></label>
+                <div class="counter">
+                    <button>-</button>
+                    <span>0</span>
+                    <button>+</button>
+                </div>
+            </div>
+        </div>
+        <div class="pay-section">
+            <select>
+                <option>Phone</option>
+            </select>
+            <button>Pay &#8377;5.0</button>
+        </div>
+    </div>
+    <script>
+        function updateDateTime() {
+            const dateTimeElement = document.getElementById('current-date-time');
+    
+            // Get the current date and time
+            const now = new Date();
+            
+            // Extract date components
+            const day = String(now.getDate()).padStart(2, '0'); // Day with leading zero
+            const month = now.toLocaleString('en-US', { month: 'short' }); // Abbreviated month
+            const year = now.getFullYear();
+            
+            // Extract time components
+            const hours = now.getHours();
+            const minutes = String(now.getMinutes()).padStart(2, '0'); // Minutes with leading zero
+            
+            // Format hours for 12-hour clock and AM/PM
+            const hours12 = hours % 12 || 12; // Convert 0 to 12 for 12-hour format
+            const amPm = hours >= 12 ? 'PM' : 'AM';
+            
+            // Construct the formatted date and time
+            const formattedDateTime = `${day} ${month},${year}| ${hours12}:${minutes} ${amPm}`;
+            
+            // Update the span with the formatted date and time
+            dateTimeElement.textContent = formattedDateTime;
+        }
+    
+        // Call the function to set the initial value
+        updateDateTime();
+    
+        // Optionally update the time every minute
+        setInterval(updateDateTime, 60000);
+    </script>
+    
+</body>
+</html>

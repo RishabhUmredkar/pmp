@@ -22,6 +22,39 @@ html, body {
     background-color: #b2cdc0;
     font-family: Arial, sans-serif;
 }
+.close-button {
+    position: absolute;
+    top: 15px; /* Adjust distance from the top */
+    left: 11px; /* Adjust distance from the right */
+    color: rgb(0, 0, 0);
+    font-size: 19px;
+    font-weight: bold;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.all-tickets {
+    position: absolute;
+    top: 7px;
+    left: 276px; /* Position text relative to the close button */
+    font-size: 14px;
+    font-weight:600;
+    text-decoration: underline; /* Adds underline to the text */
+    color: black;
+    cursor: pointer;
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+.all-tickets:hover {
+    text-decoration: none; /* Remove underline on hover */
+    color: darkred; /* Change color on hover */
+}
 
 .ticket {
     background: #ffffff;
@@ -31,7 +64,7 @@ html, body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     padding: 50px 20px 20px;
     text-align: center;
-    position: relative;
+    position: relative; /* For positioning */
 }
 .line-break {
    
@@ -44,6 +77,11 @@ html, body {
     margin-bottom: -15px;
 }
 
+.numberFont{
+
+      font-family: Arial, Helvetica, sans-serif;
+}
+
 .line-break-bottom{
 
     border-top: 2px dashed #ccc; /* Dashed line */
@@ -52,6 +90,7 @@ html, body {
     right: 15px;
     width: 110%; /* Adjust width for desired line length */
     height: 20px; /* Maintain space for symbols */
+    margin-bottom: 0px; /* Center it horizontally with margin */
 }
 
 .rotate-symbol {
@@ -71,21 +110,22 @@ html, body {
     right: -35px; /* Position on the right */
     transform: rotate(90deg); /* Rotate 90 degrees for right symbol */
 }
-
 .ticket-header {
-    background-color: #ee282f;
+    background-color: #e21d23;
     color: white;
     padding: 10px 0; /* Retain some padding for text spacing */
-    font-size: 16px;
+    font-size: 16px; /* Increase font size */
+    text-transform: uppercase; /* Optional: Make the text uppercase for emphasis */
     border-radius: 13px 13px 0 0;
     margin: 0; /* Remove any external margins */
     position: absolute; /* Make the header stick to the top of the ticket */
     top: 0; /* Align it with the top edge of the container */
     left: 0; /* Align it with the left edge of the container */
     width: 100%; /* Ensure the header spans the full width of the ticket */
-    font-weight : 700;
+    font-weight: 540; /* Make the text bold */
     box-sizing: border-box; /* Ensure padding doesn’t overflow the container */
 }
+
 .ticket-info {
     display: flex;
     justify-content: space-between;
@@ -105,7 +145,7 @@ html, body {
 .info-value {
     margin-top: 8px;
     margin-bottom: 0;
-    font-size: 18px;
+    font-size: 21px;
     font-weight: bold;
 }
 
@@ -114,7 +154,7 @@ html, body {
     justify-content: space-between;
     align-items: center;
     font-size: 16px;
-    margin: 5px 20px; /* Reduce top and bottom margin */
+    margin: 5px 3px; /* Reduce top and bottom margin */
 }
 
 .ticket-route {
@@ -122,41 +162,38 @@ html, body {
     justify-content: space-between;
     align-items: center;
     font-size: 16px;
-    margin: 5px 20px; /* Reduce margin */
+    margin: -5px 10px; /* Reduce margin */
 }
 
 .route-point {
-    width: 40%; /* Ensure equal spacing for route points */
+    width: 35%; /* Ensure equal spacing for route points */
     text-align: center;
+    font-weight: 500;
+    color: #4e5451;
+    font-size: 19px;
 }
-
 .arrow-container {
     display: flex;
-    flex-direction: row;
-    align-items: center; /* Align arrow and triangle head vertically */
     justify-content: center;
-    width: 20%; /* Allocate width for the center elements */
+    align-items: center;
+    width: 20%; /* Ensure adequate space allocation for the arrow */
+    position: relative;
 }
 
 .arrow {
-    
-    position: absolute; /* Position relative to the parent container */
-    top: 142px; /* Adjust vertical alignment */
-    font-size: 21px;
+    font-size: 10px;
     color: black;
     font-weight: lighter;
-    margin-right: 20px; /* Add space between arrow and triangle */
-    margin-left: 80px; /* Add space between arrow and triangle */
-    transform: scaleX(8); /* Scale the arrow horizontally */
-   
+    transform: scaleX(6); /* Scale horizontally for length */
+    margin: 0; /* Remove unnecessary margins */
 }
 
 .triangle-head {
-    position: absolute; /* Position relative to the parent container */
-    right: 128px; /* Adjust vertical alignment */
-    top: 147px; /* Adjust vertical alignment */
-    font-size: 12px;
+    font-size: 13px; /* Adjust size for better visibility */
     color: black;
+    position: absolute;
+    right: -5px; /* Position it at the right edge of the arrow container */
+    top: -3px;
 }
 
 .ticket-time {
@@ -260,11 +297,34 @@ color: #0e0e0e;
     }
 }
 
+/* Complaint Icon Styles with Circular Background */
+.complaint-icon {
+    position: fixed; /* Fixed position relative to the viewport */
+    bottom: 83px; /* Distance from the bottom */
+    right: 35px; /* Distance from the right */
+    cursor: pointer;
+    padding: 13px; /* Add padding for circular background */
+    background-color: #f0f0f0; /* Light gray background */
+    border-radius: 50%; /* Makes the background circular */
+    transition: transform 0.2s, background-color 0.2s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow for depth */
+    z-index: 100; /* Ensure it appears above other content */
+}
+.complaint-icon img {
+    width: 95%; /* Reduce size by 5% */
+    height: 95%; /* Maintain aspect ratio */
+    display: block; /* Remove any extra spacing inside the container */
+    margin: auto; /* Center the image within the circular background */
+}
+
     </style>
 </head>
 <body>
-    
+    <div class="close-button" onclick="closeTicket()">╳
+        <span class="all-tickets">All tickets</span>
 
+    </div>
+    
 <div id="ticketDisplay" class="ticket">
     <header class="ticket-header">
         पुणे &nbsp;महानगर &nbsp;परिवहन &nbsp;महामंडळ &nbsp;लि.
@@ -272,7 +332,7 @@ color: #0e0e0e;
     <div class="ticket-info">
         <div class="info-block">
             <p class="info-title">Route</p>
-            <p class="info-value" id="displayRoute"></p>
+            <p class="info-value numberFont" id="displayRoute"></p>
         </div>
         <div class="info-block">
             <p class="info-title">Tickets count</p>
@@ -310,7 +370,7 @@ color: #0e0e0e;
     <div class="ticket-time">
         <div>
             <p class="time-block-booking">Booking Time</p>
-            <p class="timing" id="displayBookingTime"></p>
+            <p class="timing numberFont" id="displayBookingTime"></p>
         </div>
         <div class="">
             <p class="time-block-validity">Validity Time</p>
@@ -325,37 +385,72 @@ color: #0e0e0e;
       
         <div class="line-break-bottom"></div>        
         <div class="ticket-footer">
-            <img src="photos/pmpml.png" alt="Ticket Stamp" class="popup-image">
+            <img src="pmpml.png" alt="Ticket Stamp" class="popup-image">
         </div>
     
     </div>
-
-
+    <div class="complaint-icon">
+        <img src="https://img.icons8.com/material-rounded/24/complaint.png" alt="complaint" />
+    </div>    <script>
+        // Function to format date and time as "yymmddhourminute"
+        const generateTicketId = (bookingDate) => {
+            const year = bookingDate.getFullYear().toString().slice(-2); // Last two digits of the year
+            const month = (bookingDate.getMonth() + 1).toString().padStart(2, '0'); // Month (01-12)
+            const day = bookingDate.getDate().toString().padStart(2, '0'); // Day (01-31)
+            const hours = bookingDate.getHours().toString().padStart(2, '0'); // Hours (00-23)
+            const minutes = bookingDate.getMinutes().toString().padStart(2, '0'); // Minutes (00-59)
+            
+            // Generate a random alphanumeric string (e.g., "3QBNF8")
+            const randomString = Math.random().toString(36).substr(2, 6).toUpperCase();
+            
+            // Combine everything
+            return `${year}${month}${day}${hours}${minutes}${randomString}`;
+        };
     
-
-    <script>
+        // Function to format the date and time as "07 Dec, 24 | 02:22 PM"
+        const formatDateTime = (date) => {
+            const day = date.getDate().toString().padStart(2, '0'); // Day (07)
+            const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            const month = monthNames[date.getMonth()]; // Month (Dec)
+            const year = date.getFullYear().toString().slice(-2); // Year (24)
+            let hours = date.getHours();
+            const minutes = date.getMinutes().toString().padStart(2, '0'); // Minutes (02)
+            const period = hours >= 12 ? 'PM' : 'AM'; // AM/PM
+            hours = hours % 12 || 12; // Convert to 12-hour format
+            return `${day} ${month}, ${year} | ${hours}:${minutes} ${period}`;
+        };
+    
         // Retrieve the stored data from localStorage
         const route = localStorage.getItem('route');
         const ticketCount = localStorage.getItem('ticketCount');
         const fare = localStorage.getItem('fare');
         const startingPoint = localStorage.getItem('startingPoint');
         const droppingPoint = localStorage.getItem('droppingPoint');
-        const bookingTime = localStorage.getItem('bookingTime');
-        const validityTime = localStorage.getItem('validityTime');
+    
+        // Booking time from localStorage (if provided, else use the current time)
+        const bookingTime = localStorage.getItem('bookingTime') 
+            ? new Date(localStorage.getItem('bookingTime')) 
+            : new Date();
+    
+        // Format the booking time and calculate validity time
+        const bookingTimeFormatted = formatDateTime(bookingTime);
+        const validityTimeFormatted = formatDateTime(new Date(bookingTime.getTime() +   30 * 60 * 1000)); // 2 hours from now
+    
+        // Generate the ticket ID using the booking time
+        const ticketId = generateTicketId(bookingTime);
     
         // Display the retrieved data in the HTML elements
         document.getElementById('displayRoute').textContent = route;
-        document.getElementById('displayTicketCount').textContent = ticketCount;
+        document.getElementById('displayTicketCount').textContent = `${ticketCount}F`;
         document.getElementById('displayFare').textContent = `₹${fare}`;
         document.getElementById('displayStartingPoint').textContent = startingPoint;
         document.getElementById('displayDroppingPoint').textContent = droppingPoint;
-        document.getElementById('displayBookingTime').textContent = bookingTime;
-        document.getElementById('displayValidityTime').textContent = validityTime;
-    
-        // Generate a ticket ID (for example, a random alphanumeric string)
-        const ticketId = `TICKET-${Math.random().toString(36).substr(2, 9).toUpperCase()}`;
+        document.getElementById('displayBookingTime').textContent = bookingTimeFormatted;
+        document.getElementById('displayValidityTime').textContent = validityTimeFormatted;
         document.getElementById('displayTicketId').textContent = ticketId;
     </script>
+    
+    
     
     
 </body>
