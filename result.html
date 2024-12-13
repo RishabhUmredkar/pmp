@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Details</title>
+</head>
+<body>
+
+    <div class="ticket-info">
+        <h2>Ticket Details</h2>
+        <p>Route: <span id="route"></span></p>
+        <p>Starting Stop: <span id="start"></span></p>
+        <p>Ending Stop: <span id="end"></span></p>
+        <p>Full Tickets: <span id="full-tickets"></span></p>
+        <p>Half Tickets: <span id="half-tickets"></span></p>
+        <p>Total Price: ₹<span id="total-price"></span></p>
+        <p>Payment Method: <span id="payment-method"></span></p>
+        <p>Purchase Date & Time: <span id="purchase-date"></span></p>
+        <p>Ticket Validity: <span id="validity-time"></span></p>
+    </div>
+
+    <script>
+        // Function to parse query parameters from URL
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // Get data from URL parameters
+        const route = getQueryParam('route');
+        const start = getQueryParam('start');
+        const end = getQueryParam('end');
+        const fullTickets = parseInt(getQueryParam('fullTickets'));
+        const halfTickets = parseInt(getQueryParam('halfTickets'));
+        const totalPrice = parseFloat(getQueryParam('totalPrice'));
+        const paymentMethod = getQueryParam('paymentMethod');
+        const purchaseDate = decodeURIComponent(getQueryParam('date'));
+        const validityTime = decodeURIComponent(getQueryParam('validityTime'));
+
+        // Set the ticket details
+        document.getElementById('route').textContent = route;
+        document.getElementById('start').textContent = start;
+        document.getElementById('end').textContent = end;
+        document.getElementById('full-tickets').textContent = fullTickets;
+        document.getElementById('half-tickets').textContent = halfTickets;
+        document.getElementById('total-price').textContent = totalPrice.toFixed(2);
+        document.getElementById('payment-method').textContent = paymentMethod;
+        document.getElementById('purchase-date').textContent = purchaseDate;
+
+        // Display the validity time
+        document.getElementById('validity-time').textContent = validityTime;
+    </script>
+
+</body>
+</html>

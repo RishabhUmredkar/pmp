@@ -1,31 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ticket Clone3</title>
-    <link rel="stylesheet" href="styles.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anek+Devanagari:wdth,wght@96.8,100..800&family=Open+Sans:wght@500&family=Roboto+Slab:wght@200;400&family=Yatra+One&display=swap" rel="stylesheet"> 
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <title>Ticket Clone3</title>
+        <link rel="stylesheet" href="styles.css">
+    
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Anek+Devanagari:wdth,wght@96.8,100..800&family=Open+Sans:wght@500&family=Roboto+Slab:wght@200;400&family=Yatra+One&display=swap" rel="stylesheet">
 
 <style>
 
 /* General Styles */
 html, body {
-    height: 100%; /* Ensure the full height of the viewport is utilized */
+    height: 100%;
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #b2cdc0;
     font-family: Arial, sans-serif;
+    overflow: hidden; /* Prevent scrolling */
+}
+body {
+    padding: 0 10px; /* Add padding to prevent horizontal overflow */
+    box-sizing: border-box; /* Include padding in element width */
 }
 .close-button {
     position: absolute;
-    top: 15px; /* Adjust distance from the top */
-    left: 11px; /* Adjust distance from the right */
+    top: 15px;
+    left: 11px;
     color: rgb(0, 0, 0);
     font-size: 19px;
     font-weight: bold;
@@ -39,91 +44,89 @@ html, body {
     cursor: pointer;
 }
 
+
+
 .all-tickets {
     position: absolute;
     top: 7px;
-    left: 276px; /* Position text relative to the close button */
+    left: 276px;
     font-size: 14px;
-    font-weight:600;
-    text-decoration: underline; /* Adds underline to the text */
+    font-weight: 600;
+    text-decoration: underline;
     color: black;
     cursor: pointer;
-    white-space: nowrap; /* Prevent text wrapping */
+    white-space: nowrap;
 }
 
 .all-tickets:hover {
-    text-decoration: none; /* Remove underline on hover */
-    color: darkred; /* Change color on hover */
+    text-decoration: none;
+    color: darkred;
 }
 
 .ticket {
     background: #ffffff;
-    width: 90%; /* Make it responsive by using a percentage */
-    max-width: 300px; /* Limit maximum width for larger devices */
+    width: 100%;
+    max-width: 300px;
     border-radius: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     padding: 50px 20px 20px;
     text-align: center;
-    position: relative; /* For positioning */
+    position: relative;
 }
 .line-break {
-   
-    border-top: 2px dashed #ccc; /* Dashed line */
-    margin: 20px auto; /* Center it horizontally with margin */
-    position: relative; /* Enable positioning for child elements */
+    border-top: 2px dashed #ccc;
+    margin: 20px auto;
+    position: relative;
     right: 10px;
-    width: 105%; /* Adjust width for desired line length */
-    height: 20px; /* Maintain space for symbols */
+    width: 105%;
+    height: 20px;
     margin-bottom: -15px;
 }
 
-.numberFont{
-
-      font-family: Arial, Helvetica, sans-serif;
+.numberFont {
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-.line-break-bottom{
-
-    border-top: 2px dashed #ccc; /* Dashed line */
-    margin: 20px auto; /* Center it horizontally with margin */
-    position: relative; /* Enable positioning for child elements */
+.line-break-bottom {
+    border-top: 2px dashed #ccc;
+    margin: 20px auto;
+    position: relative;
     right: 15px;
-    width: 110%; /* Adjust width for desired line length */
-    height: 20px; /* Maintain space for symbols */
-    margin-bottom: 0px; /* Center it horizontally with margin */
+    width: 110%;
+    height: 20px;
+    margin-bottom: 0px;
 }
 
 .rotate-symbol {
-    position: absolute; /* Position relative to the parent container */
-    top: -35px; /* Adjust vertical alignment */
+    position: absolute;
+    top: -35px;
     font-size: 50px;
     color: #ccc;
-
 }
 
 .rotate-symbol.left-symbol {
-    left: -30px; /* Position on the left */
-    transform: rotate(270deg); /* Rotate 270 degrees for left symbol */
+    left: -30px;
+    transform: rotate(270deg);
 }
 
 .rotate-symbol.right-symbol {
-    right: -35px; /* Position on the right */
-    transform: rotate(90deg); /* Rotate 90 degrees for right symbol */
+    right: -35px;
+    transform: rotate(90deg);
 }
 .ticket-header {
     background-color: #e21d23;
     color: white;
-    padding: 10px 0; /* Retain some padding for text spacing */
-    font-size: 16px; /* Increase font size */
-    text-transform: uppercase; /* Optional: Make the text uppercase for emphasis */
+    padding: 10px 0;
+    font-size: 16px;
+    text-transform: uppercase;
     border-radius: 13px 13px 0 0;
-    margin: 0; /* Remove any external margins */
-    position: absolute; /* Make the header stick to the top of the ticket */
-    top: 0; /* Align it with the top edge of the container */
-    left: 0; /* Align it with the left edge of the container */
-    width: 100%; /* Ensure the header spans the full width of the ticket */
-    font-weight: 540; /* Make the text bold */
-    box-sizing: border-box; /* Ensure padding doesn’t overflow the container */
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    font-weight: 540;
+    box-sizing: border-box;
 }
 
 .ticket-info {
@@ -154,7 +157,7 @@ html, body {
     justify-content: space-between;
     align-items: center;
     font-size: 16px;
-    margin: 5px 3px; /* Reduce top and bottom margin */
+    margin: 5px 3px;
 }
 
 .ticket-route {
@@ -162,21 +165,21 @@ html, body {
     justify-content: space-between;
     align-items: center;
     font-size: 16px;
-    margin: -5px 10px; /* Reduce margin */
+    margin: -5px 10px;
 }
 
 .route-point {
-    width: 35%; /* Ensure equal spacing for route points */
+    width: 36%;
     text-align: center;
     font-weight: 500;
     color: #4e5451;
-    font-size: 19px;
+    font-size: 17px;
 }
 .arrow-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 20%; /* Ensure adequate space allocation for the arrow */
+    width: 20%;
     position: relative;
 }
 
@@ -184,15 +187,15 @@ html, body {
     font-size: 10px;
     color: black;
     font-weight: lighter;
-    transform: scaleX(6); /* Scale horizontally for length */
-    margin: 0; /* Remove unnecessary margins */
+    transform: scaleX(6);
+    margin: 0;
 }
 
 .triangle-head {
-    font-size: 13px; /* Adjust size for better visibility */
+    font-size: 13px;
     color: black;
     position: absolute;
-    right: -5px; /* Position it at the right edge of the arrow container */
+    right: -5px;
     top: -3px;
 }
 
@@ -206,22 +209,17 @@ html, body {
 
 .time-block-booking {
     justify-content: space-between;
-    text-align: left; /* Align text to the left */
-    margin-right: 68px; /* Remove unnecessary left margin */
+    text-align: left;
+    margin-right: 68px;
     margin-bottom: 0px;
     margin-top: 0px;
-
 }
 
 .time-block-validity {
-
-    text-align: left; /* Align text to the left */
-    margin-right:50px; /* Remove unnecessary left margin */
+    text-align: left;
+    margin-right: 50px;
     margin-bottom: 0px;
     margin-top: 0px;
-
-
-
 }
 .ticket-id {
     font-size: 14px;
@@ -229,7 +227,7 @@ html, body {
     margin: 15px 0;
 }
 .ticket-info .info-block:nth-child(2) {
-    margin-left: 20%; /* Move the Ticket count section 10% to the right */
+    margin-left: 20%;
 }
 .ticket-status {
     font-size: 24px;
@@ -242,7 +240,7 @@ html, body {
 .ticket-logo {
     margin-top: 20px;
 }
-.timing{
+.timing {
     color: black; 
     font-weight: bold;
     font-size: 13px;
@@ -274,56 +272,54 @@ html, body {
     margin: 0;
     color: gray;
 }
-.UniqCode{
-color: #0e0e0e;
+.UniqCode {
+    color: #0e0e0e;
 }
 
 /* footer */
 .popup-image {
-    width: 180px; /* Initial size of the image */
+    width: 180px;
     height: auto;
     position: relative;
-    animation: popup-effect 2s ease-in-out infinite; /* Loop the popup animation */
+    animation: popup-effect 2s ease-in-out infinite;
 }
 
 @keyframes popup-effect {
     0%, 100% {
-        transform: scale(0.5); /* Normal size */
-        opacity: 1; /* Fully visible */
+        transform: scale(0.5);
+        opacity: 1;
     }
     50% {
-        transform: scale(1); /* Slightly larger */
-        opacity: 1; /* Fully visible */
+        transform: scale(1);
+        opacity: 1;
     }
 }
 
-/* Complaint Icon Styles with Circular Background */
 .complaint-icon {
-    position: fixed; /* Fixed position relative to the viewport */
-    bottom: 83px; /* Distance from the bottom */
-    right: 35px; /* Distance from the right */
+    position: fixed;
+    bottom: 30px;
+    right: 20px;
     cursor: pointer;
-    padding: 13px; /* Add padding for circular background */
-    background-color: #f0f0f0; /* Light gray background */
-    border-radius: 50%; /* Makes the background circular */
+    padding: 14px;
+    background-color: #f0f0f0;
+    border-radius: 50%;
     transition: transform 0.2s, background-color 0.2s;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow for depth */
-    z-index: 100; /* Ensure it appears above other content */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 100;
 }
 .complaint-icon img {
-    width: 95%; /* Reduce size by 5% */
-    height: 95%; /* Maintain aspect ratio */
-    display: block; /* Remove any extra spacing inside the container */
-    margin: auto; /* Center the image within the circular background */
+    width: 95%;
+    height: 95%;
+    display: block;
+    margin: auto;
 }
 
-    </style>
+</style>
 </head>
 <body>
-    <div class="close-button" onclick="closeTicket()">╳
+    <div class="close-button" onclick="goToIndexPage()">╳
         <span class="all-tickets">All tickets</span>
-
-    </div>
+    </div>    
     
 <div id="ticketDisplay" class="ticket">
     <header class="ticket-header">
@@ -421,6 +417,9 @@ color: #0e0e0e;
         };
     
         // Retrieve the stored data from localStorage
+        function goToIndexPage() {
+        window.location.href = "index.html"; // Change "index.html" to your desired page URL
+    }
         const route = localStorage.getItem('route');
         const ticketCount = localStorage.getItem('ticketCount');
         const fare = localStorage.getItem('fare');
@@ -448,6 +447,18 @@ color: #0e0e0e;
         document.getElementById('displayBookingTime').textContent = bookingTimeFormatted;
         document.getElementById('displayValidityTime').textContent = validityTimeFormatted;
         document.getElementById('displayTicketId').textContent = ticketId;
+
+         // Block Pull-to-Refresh
+            window.addEventListener('touchstart', (e) => {
+            let touchStartY = e.touches[0].clientY;
+
+            window.addEventListener('touchmove', (e) => {
+                let touchMoveY = e.touches[0].clientY;
+                if (touchStartY < touchMoveY) {
+                    e.preventDefault();
+                }
+            }, { passive: false });
+        });
     </script>
     
     
