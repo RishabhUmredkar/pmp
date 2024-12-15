@@ -1,39 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ticket Details</title>
-    <link href="https://fonts.googleapis.com/css2?family=Anek+Devanagari:wght@400;600&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Form Page</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anek+Devanagari:wdth,wght@96.8,100..800&family=Open+Sans:wght@500&family=Roboto+Slab:wght@200;400&family=Yatra+One&display=swap" rel="stylesheet">
+
+
     <style>
         /* General Styles */
         body {
-            font-family: 'Roboto Slab', serif;
-            margin: 0;
-            padding: 0;
-            background-color: #b2cdc0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+    font-family: 'Roboto Slab', serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw; /* Ensures full width of the viewport */
+}
 
-        .container {
-            width: 90%;
-            max-width: 400px;
-            background: #fff;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            position: relative;
-            border-radius: 20px;
-            
-        }
+.container {
+    width: 90%; /* Adjust container width */
+    max-width: 400px; /* Limits maximum width */
+    background: #efe8e8;
+    position: relative;
+    border-radius: 20px;
+    overflow-x: hidden; /* Prevents horizontal scrolling */
+}
+
 
         .container::before, .container::after {
             content: '';
             position: absolute;
             width: 40px;
             height: 40px;
-            background: #b2cdc0;
+            background: #ffffff;
             border-radius: 50%;
             top: 50%;
             transform: translateY(-50%);
@@ -75,10 +83,9 @@
             font-size: 12px;
             color: #ffffff;
         }
-        
 
         .content {
-            padding: 20px;
+            padding: 10px;
             position: relative;
         }
 
@@ -90,7 +97,7 @@
 
         .route-info .icon {
             width: 50px;
-            height: 50px;
+            height: 45px;
             background-color: #219652;
             border-radius: 50%;
             display: flex;
@@ -129,16 +136,14 @@
             gap: 15px; /* Adjusted the gap for better spacing */
         }
 
-       .stops label {
+        .stops label {
     display: flex;
-    flex-direction: column; /* Stack the elements vertically */
-    gap: 5px; /* Add some gap between the radio button, label, and input */
-    font-size: 16px;
+    align-items: center; /* Center the label with the custom radio */
+    gap: 10px; /* Adjusted the gap */
+    font-size: 15px;
     color: #333;
-
-
-
 }
+
 
 
         .custom-radio {
@@ -167,16 +172,15 @@
         }
 
         .stop-name {
-    font-size: 14px;
-    color: #616161;
+    font-size: 19px;
+    color: #0f0d0d;
     border: none;
     background: transparent;
     outline: none;
     width: auto; /* Ensure it adjusts according to the input length */
     display: inline; /* Keeps the input inline with the label */
-    margin-left: 10px; /* Adjusts the spacing if needed */
+    margin-left: 20px; /* Adjusts the spacing if needed */
 
-   
 }
 
         
@@ -333,236 +337,273 @@
         }
         #current-date-time {
             margin-bottom: 20px;
-            font-size: 18px;
-            font-weight: bold;
-            color: #ffffff;
+            font-size: 15px;
+            font-weight:600;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         }
+        .logo-section {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.logo-image {
+    width: 30px; /* Adjust width as needed */
+    height: auto;
+    border-radius: 25%;
+}
+
     </style>
 </head><body>
     
-
-    <div class="container">
-        <div class="header">
-            <div><span id="current-date-time"></span></div>
-        </div>
-        <div class="dotted-line-between"></div>
-    
-        <div class="content">
-            <div class="route-info">
-                <div class="icon">
-                    <img width="30" height="30" src="https://img.icons8.com/material-rounded/48/FFFFFF/bus.png" alt="bus" />
-                </div>
-                <div class="details">
-                    <input type="text" name="routeNumber" id="route-number" class="route-number" value="133" />
-                    <div>towards Ma Na Pa Shramik Bhavan</div>
-                </div>
+        <div class="container">
+            <div class="header">
+                <div><span id="current-date-time"></span></div>
             </div>
+            <div class="dotted-line-between"></div>
+        
+            <div class="content">
+                <div class="route-info">
+                    <div class="icon">
+                        <img width="30" height="30" src="https://img.icons8.com/material-rounded/48/FFFFFF/bus.png" alt="bus" />
+                    </div>
+                    <div class="details">
+                        <input type="text" name="route" id="route" class="route-number" value="133" />
+                        <div style="margin-left: 10px;">towards Ma Na Pa Shramik Bhavan</div>
+                    </div>
+                </div>
     
-            <div class="horizontal-line"></div>
-    
-            <div class="stops">
-                <label>
-                    <span class="custom-radio"></span>
-                    Starting stop 
-                    <input type="text" name="startStop" id="start-stop" class="stop-name" value="Kumbharwada" />
-                </label>
+                <div class="horizontal-line"></div>
                 
-                <label>
-                    <input type="radio" name="stop" />
-                    <span class="custom-radio"></span>
-                    Ending stop
-                    <br>
-                    <input type="text" name="endStop" id="end-stop" class="stop-name" value="Kumbharwada" />
-                </label>
-            </div>
-    
-            <div class="fare-options">
-                <button>By Fare</button>
-                <button>By Ending stop</button>
-            </div>
-    
-            <div class="ticket-count">
-                <label for="full-ticket-price">Full</label>
-                <select name="fullTicketPrice" id="full-ticket-price" class="ticket-price">
-                    <option value="5.0">₹5.0</option>
-                    <option value="10.0">₹10.0</option>
-                    <option value="15.0">₹15.0</option>
-                    <option value="20.0">₹20.0</option>
-                </select>
-                 
-                <div class="counter">
-                    <button type="button" class="decrease" id="full-decrease">-</button>
-                    <span id="full-ticket-count">1</span>
-                    <button type="button" class="increase" id="full-increase">+</button>
-                </div>
-            </div>
-            
-            <div class="ticket-count">
-                <label for="half-ticket-price">Half</label>
-                <select name="halfTicketPrice" id="half-ticket-price" class="ticket-price">
-                    <option value="2.5">₹2.5</option>
-                    <option value="5.0">₹5.0</option>
-                    <option value="7.5">₹7.5</option>
-                    <option value="10.0">₹10.0</option>
-                </select>
-                <div class="counter">
-                    <button type="button" class="decrease" id="half-decrease">-</button>
-                    <span id="half-ticket-count">0</span>
-                    <button type="button" class="increase" id="half-increase">+</button>
-                </div>
-            </div>
-            
-            <!-- Hidden inputs to hold the ticket counts -->
-            <input type="hidden" name="fullTicketCount" id="fullTicketCountInput">
-            <input type="hidden" name="halfTicketCount" id="halfTicketCountInput">
-            <input type="hidden" id="validity-time-input">
+                <div class="stops">
+                    <label style="display: flex; flex-direction: column; align-items: flex-start;">
+                        <span>
+                            <span class="custom-radio"></span>
+                            Starting Point
+                        </span>
+                        <select name="startingPoint" id="starting-point" class="stop-name" style="margin-top: 0px; ">
+                            <option value="Choose Option" selected>Starting stop</option>
+                            <!-- Add more options here as needed -->
+                            <option value="Karve Nagar">Karve Nagar</option>
+                            <option value="Vadacha Stop">Vadacha Stop</option>
+                            <option value="Vandevi karve Road">Vandevi karve Road</option>
+                            <option value="Deccan Gymkhana">Deccan Gymkhana</option>
+                            <option value="Deccan Corner">Deccan Corner</option>
+                            <!-- Add other options -->
+                        </select>
+                    </label>
+                
+                    <label style="display: flex; flex-direction: column; align-items: flex-start; margin-top: 15px;">
+                        <span>
+                            <span class="custom-radio"></span>
+                            Ending Stop
+                        </span>
+                        <select name="droppingPoint" id="dropping-point" class="stop-name" style="margin-top: 0px;">
+                            <option value="Choose Option" selected>Ending stop</option>
+                            <!-- Add more options here as needed -->
+                            <option value="Karve Nagar">Karve Nagar</option>
+                            <option value="Vadacha Stop">Vadacha Stop</option>
+                            <option value="Deccan Corner">Deccan Corner</option>
+                            <option value="Goodluck Chowk">Goodluck Chowk</option>
+                            <option value="Deccan Gymkhana">Deccan Gymkhana</option>
 
-            <div class="pay-section">
-                <select name="paymentMethod" id="payment-method">
-                    <option value="Phone">Phone</option>
-                    <option value="Cash">Cash</option>
-                    <option value="Card">Card</option>
-                </select>
-                <button type="button" class="total-price" onclick="submitForm()" id="pay-button">Pay ₹5.0</button>
+                            <!-- Add other options -->
+                        </select>
+                    </label>
+                </div>
+                
+    
+                <div class="fare-options">
+                    <button>By Fare</button>
+                    <button>By Ending stop</button>
+                </div>
+        
+                <div class="ticket-count">
+                    <label for="full-ticket-price">Full</label>
+                    <select name="fullTicketPrice" id="full-ticket-price" class="ticket-price">
+                        <option value="5.0">₹5</option>
+                        <option value="10.0">₹10</option>
+                        <option value="15.0">₹15</option>
+                        <option value="20.0">₹20</option>
+                    </select>
+                     
+                    <div class="counter">
+                        <button type="button" class="decrease" id="full-decrease">-</button>
+                        <span id="full-ticket-count">1</span>
+                        <button type="button" class="increase" id="full-increase">+</button>
+                    </div>
+                </div>
+                
+                <div class="ticket-count">
+                    <label for="half-ticket-price">Half</label>
+                    <select name="halfTicketPrice" id="half-ticket-price" class="ticket-price">
+                        <option value="2.5">₹2</option>
+                        <option value="5.0">₹5</option>
+                        <option value="7.5">₹7</option>
+                        <option value="10.0">₹10</option>
+                    </select>
+                    <div class="counter">
+                        <button type="button" class="decrease" id="half-decrease">-</button>
+                        <span id="half-ticket-count">0</span>
+                        <button type="button" class="increase" id="half-increase">+</button>
+                    </div>
+                </div>
+                
+                <!-- Hidden inputs to hold the ticket counts -->
+                <input type="hidden" name="fullTicketCount" id="fullTicketCountInput">
+                <input type="hidden" name="halfTicketCount" id="halfTicketCountInput">
+                <input type="hidden" id="validity-time-input">
+    
+                <div class="pay-section">
+                    <div class="logo-section">
+                        <img src="phonePay.png" alt="PhonePe Logo" class="logo-image" />
+                    </div>
+                    <select name="paymentMethod" id="payment-method">
+                        <option value="Phone">Phone</option>
+                        <option value="Cash">Cash</option>
+                        <option value="Card">Card</option>
+                    </select>
+                    <button type="button" class="total-price" onclick="submitForm()" id="pay-button">Pay ₹5.0</button>
+                </div>
+                
             </div>
         </div>
-    </div>
     
+        <script>
+            const routeInput = document.getElementById('route');
+            const startingPointInput = document.getElementById('starting-point');
+            const droppingPointInput = document.getElementById('dropping-point');
+            const fullTicketPriceSelect = document.getElementById('full-ticket-price');
+            const halfTicketPriceSelect = document.getElementById('half-ticket-price');
+            const fullTicketCountElement = document.getElementById('full-ticket-count');
+            const halfTicketCountElement = document.getElementById('half-ticket-count');
+            const payButton = document.getElementById('pay-button');
+            const dateTimeElement = document.getElementById('current-date-time');
     
-    <script>
-// Get necessary DOM elements
-const fullTicketPriceSelect = document.getElementById('full-ticket-price');
-const fullTicketCountElement = document.getElementById('full-ticket-count');
-const halfTicketPriceSelect = document.getElementById('half-ticket-price');
-const halfTicketCountElement = document.getElementById('half-ticket-count');
-const totalPriceElement = document.getElementById('pay-button');
-const validityTimeInput = document.getElementById('validity-time-input');
-const dateTimeElement = document.getElementById('current-date-time');
+            let fullTicketCount = 1;
+            let halfTicketCount = 0;
+            let fullFare = parseFloat(fullTicketPriceSelect.value);
+            let halfFare = parseFloat(halfTicketPriceSelect.value);
+    
 
-// Initial values for full and half tickets
-let fullTicketCount = 1;
-let fullTicketPrice = parseFloat(fullTicketPriceSelect?.value || 0);
-let halfTicketCount = 0;
-let halfTicketPrice = parseFloat(halfTicketPriceSelect?.value || 0);
+            document.getElementById('fullTicketCountInput').value = fullTicketCount;
+            document.getElementById('halfTicketCountInput').value = halfTicketCount;
 
-// Function to update the total price
-function updateTotalPrice() {
-    const totalFullPrice = fullTicketCount * fullTicketPrice;
-    const totalHalfPrice = halfTicketCount * halfTicketPrice;
-    const totalPrice = totalFullPrice + totalHalfPrice;
-
-    // Update the total price displayed on the Pay button
-    totalPriceElement.innerHTML = `Pay ₹${totalPrice.toFixed(2)}`;
+            function updateTotalPrice() {
+    const totalPrice = (fullTicketCount * fullFare) + (halfTicketCount * halfFare);
+    payButton.innerHTML = `Pay &#8377;${totalPrice.toFixed(2)}`;
 }
-
-// Event listeners for dropdown value changes
-fullTicketPriceSelect?.addEventListener('change', function () {
-    fullTicketPrice = parseFloat(this.value);
+// Full ticket counter logic
+document.getElementById('full-increase').addEventListener('click', () => {
+    fullTicketCount++;
+    fullTicketCountElement.textContent = fullTicketCount;
+    document.getElementById('fullTicketCountInput').value = fullTicketCount; // Sync hidden input
     updateTotalPrice();
 });
 
-halfTicketPriceSelect?.addEventListener('change', function () {
-    halfTicketPrice = parseFloat(this.value);
-    updateTotalPrice();
-});
-
-// Decrease button functionality for full tickets
-document.getElementById('full-decrease')?.addEventListener('click', function () {
+document.getElementById('full-decrease').addEventListener('click', () => {
     if (fullTicketCount > 0) {
         fullTicketCount--;
         fullTicketCountElement.textContent = fullTicketCount;
+        document.getElementById('fullTicketCountInput').value = fullTicketCount; // Sync hidden input
         updateTotalPrice();
     }
 });
 
-// Increase button functionality for full tickets
-document.getElementById('full-increase')?.addEventListener('click', function () {
-    fullTicketCount++;
-    fullTicketCountElement.textContent = fullTicketCount;
+// Half ticket counter logic
+document.getElementById('half-increase').addEventListener('click', () => {
+    halfTicketCount++;
+    halfTicketCountElement.textContent = halfTicketCount;
+    document.getElementById('halfTicketCountInput').value = halfTicketCount; // Sync hidden input
     updateTotalPrice();
 });
 
-// Decrease button functionality for half tickets
-document.getElementById('half-decrease')?.addEventListener('click', function () {
+document.getElementById('half-decrease').addEventListener('click', () => {
     if (halfTicketCount > 0) {
         halfTicketCount--;
         halfTicketCountElement.textContent = halfTicketCount;
+        document.getElementById('halfTicketCountInput').value = halfTicketCount; // Sync hidden input
         updateTotalPrice();
     }
 });
 
-// Increase button functionality for half tickets
-document.getElementById('half-increase')?.addEventListener('click', function () {
-    halfTicketCount++;
-    halfTicketCountElement.textContent = halfTicketCount;
-    updateTotalPrice();
-});
+// Add logging to debug
+console.log("Full Tickets:", fullTicketCount, "Half Tickets:", halfTicketCount);
 
-// Initialize total price on page load
-updateTotalPrice();
 
-// Function to format the time in a readable format
-function formatLocalTime(date) {
-    return date.toLocaleString('en-IN', {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit'
-    });
-}
-
-// Calculate validity time (30 minutes from now)
-const now = new Date();
-const validityTime = new Date(now);
-validityTime.setMinutes(validityTime.getMinutes() + 30);
-validityTimeInput.value = formatLocalTime(validityTime);
-
-// Function to submit the form and pass data to result.html
-function submitForm() {
-    const routeNumber = document.getElementById('route-number')?.value || '';
-    const startStop = document.getElementById('start-stop')?.value || '';
-    const endStop = document.getElementById('end-stop')?.value || '';
-    const paymentMethod = document.getElementById('payment-method')?.value || '';
-    const currentDate = new Date().toLocaleString('en-IN', {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit'
-    });
-
-    // Calculate total price
-    const totalPrice = (fullTicketCount * fullTicketPrice) + (halfTicketCount * halfTicketPrice);
-
-    // Redirect to result.html and pass parameters, including current date
-    window.location.href = `result.html?route=${routeNumber}&start=${startStop}&end=${endStop}&fullTickets=${fullTicketCount}&halfTickets=${halfTicketCount}&totalPrice=${totalPrice}&paymentMethod=${paymentMethod}&date=${encodeURIComponent(currentDate)}&validityTime=${encodeURIComponent(validityTimeInput.value)}`;
-}
-
-// Function to update the date and time
-function updateDateTime() {
-    const now = new Date();
-    const day = String(now.getDate()).padStart(2, '0');
-    const month = now.toLocaleString('en-US', { month: 'short' });
-    const year = now.getFullYear();
-    const hours = now.getHours();
-    const minutes = String(now.getMinutes()).padStart(2, '0');
-    const hours12 = hours % 12 || 12;
-    const amPm = hours >= 12 ? 'PM' : 'AM';
-
-    const formattedDateTime = `${day} ${month}, ${year} | ${hours12}:${minutes} ${amPm}`;
-    dateTimeElement.textContent = formattedDateTime;
-}
-
-// Update the time every minute
-updateDateTime();
-setInterval(updateDateTime, 60000);
-
+            // Fare selection logic
+            fullTicketPriceSelect.addEventListener('change', () => {
+                fullFare = parseFloat(fullTicketPriceSelect.value);
+                updateTotalPrice();
+            });
+    
+            halfTicketPriceSelect.addEventListener('change', () => {
+                halfFare = parseFloat(halfTicketPriceSelect.value);
+                updateTotalPrice();
+            });
+    
+            // Format the time in a readable format
+            function formatLocalTime(date) {
+                return date.toLocaleString('en-IN', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit'
+                });
+            }
+    
+            // Calculate validity time (30 minutes from now)
+            const now = new Date();
+            const validityTime = new Date(now);
+            validityTime.setMinutes(validityTime.getMinutes() + 30);
+    
+            // Update date and time display
+            function updateDateTime() {
+                const now = new Date();
         
-    </script>
-        </body>
-</html>
+                // Format date as "15 Dec, 2024"
+                const options = { day: '2-digit', month: 'short', year: 'numeric' };
+                const formattedDate = now.toLocaleDateString('en-US', options);
+        
+                // Format time as "04:14 AM/PM"
+                const hours = now.getHours();
+                const minutes = now.getMinutes().toString().padStart(2, '0');
+                const ampm = hours >= 12 ? 'PM' : 'AM';
+                const formattedTime = `${hours % 12 || 12}:${minutes} ${ampm}`;
+        
+                // Combine date and time
+                const dateTimeString = `${formattedDate} | ${formattedTime}`;
+        
+                // Update the DOM
+                dateTimeElement.textContent = dateTimeString;
+            }
+    
+            setInterval(updateDateTime, 1000);
+            updateDateTime();
+    
+            // Function to submit data to another page or store in localStorage
+            function submitForm() {
+                const route = routeInput.value;
+                const startingPoint = startingPointInput.value;
+                const droppingPoint = droppingPointInput.value;
+                const bookingTime = formatLocalTime(new Date());
+                const validityTimeFormatted = formatLocalTime(validityTime);
+    
+                // Save data to localStorage
+                localStorage.setItem('route', route);
+                localStorage.setItem('fullTicketCount', fullTicketCount);
+                localStorage.setItem('halfTicketCount', halfTicketCount);
+                localStorage.setItem('fare', (fullTicketCount * fullFare) + (halfTicketCount * halfFare));
+                localStorage.setItem('startingPoint', startingPoint);
+                localStorage.setItem('droppingPoint', droppingPoint);
+                localStorage.setItem('bookingTime', bookingTime);
+                localStorage.setItem('validityTime', validityTimeFormatted);
+    
+                // Redirect to result.html
+                window.location.href = `clone3.html?route=${route}&fullTicketCount=${fullTicketCount}&fare=${(fullTicketCount * fullFare) + (halfTicketCount * halfFare)}&startingPoint=${startingPoint}&droppingPoint=${droppingPoint}&bookingTime=${encodeURIComponent(bookingTime)}&validityTime=${encodeURIComponent(validityTimeFormatted)}`;
+            }
+        </script>
+    </body>
+    </html>
